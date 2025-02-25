@@ -41,7 +41,7 @@ The **Crypto AI Assistant** is an intelligent conversational agent designed to p
 ### Installation
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/your-repo/crypto-ai-assistant.git
+   git clone https://github.com/skpthe1/Crypto_AI_Agent.git
    cd crypto-ai-assistant
    ```
 
