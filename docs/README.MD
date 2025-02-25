@@ -22,31 +22,7 @@ The **Crypto AI Assistant** is an intelligent conversational agent designed to p
 - **ReAct Agent Integration**  
   - Implements Reasoning + Acting (ReAct) to determine whether to fetch prices or provide general knowledge.  
   - Displays reasoning steps in the terminal for debugging.  
-
-### Bonus Features
-- **Rate Limiting and Caching**  
-  - Uses caching to reduce redundant API calls for frequently requested prices.  
-  - Implements basic rate limiting to avoid exceeding API usage limits.  
-
-- **Translation-Aware Responses**  
-  - Designed to handle language translation queries (though full translation support is not yet implemented).  
-
 ---
-
-## Architecture Diagram
-+-------------------+        +-----------------+       +--------------------+
-|                   |        |                 |       |                    |
-|    Streamlit UI   +------->+     AI Agent    +------>+    Together AI     |
-|                   |        |                 |       |    (LLM Model)     |
-+-------------------+        +--------+--------+       +--------------------+
-                                    |
-                                    v
-                            +-------------------+
-                            |                   |
-                            |    Crypto API     |
-                            | (CoinGecko API)   |
-                            +-------------------+
-
 ### Explanation of Components
 - **Streamlit UI**: A simple chat interface for user interaction.  
 - **AI Agent**: The core logic that maintains conversation history and decides whether to fetch prices or use the LLM.  
@@ -67,32 +43,38 @@ The **Crypto AI Assistant** is an intelligent conversational agent designed to p
    ```bash
    git clone https://github.com/your-repo/crypto-ai-assistant.git
    cd crypto-ai-assistant
+   ```
 
-2. **Create a Virtual Environment**
-  ```bash
-  python -m venv venv
-  source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+2. **Create a Virtual Environment**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
 
-3. **Install Dependencies**
-  ```bash
+3. **Install Dependencies**  
+   ```bash
    pip install -r requirements.txt
+   ```
 
-4. **Set Up Environment Variables**
- ```bash
-  Create a .env file in the root directory with the following:
-  TOGETHER_API_KEY=your_together_ai_api_key
+4. **Set Up Environment Variables**  
+   ```bash
+   # Create a .env file in the root directory with the following:
+   TOGETHER_API_KEY=your_together_ai_api_key
+   ```
 
-5. **Run the Application**
- ```bash
-  streamlit run app.py
-
+5. **Run the Application**  
+   ```bash
+   streamlit run app.py
+   ```
 
 ### Assumptions and Limitations
-**Assumptions**
-User queries are in English.
-Cryptocurrency names generally match those recognized by CoinGecko (e.g., "bitcoin", "ethereum").
 
-**Limitations**
-No real-time language translation for non-English inputs.
-The ReAct agent may misinterpret ambiguous queries due to reliance on prompt engineering.
-Dependent on public APIs (Together AI and CoinGecko), which may have rate limits or downtime.
+**Assumptions**  
+- User queries are in English.  
+- Cryptocurrency names generally match those recognized by CoinGecko (e.g., "bitcoin", "ethereum").  
+
+**Limitations**  
+- No real-time language translation for non-English inputs.  
+- The ReAct agent may misinterpret ambiguous queries due to reliance on prompt engineering.  
+- Dependent on public APIs (Together AI and CoinGecko), which may have rate limits or downtime.  
+
