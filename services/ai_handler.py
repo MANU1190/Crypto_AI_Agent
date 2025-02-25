@@ -32,21 +32,23 @@ class AIAgent:
             return "You are a helpful cryptocurrency assistant."  # Default prompt
 
     def process_query(self, query: str) -> str:
-        """Processes a user query and returns a response."""
+        """Processes a user query using ReAct and returns a response."""
         try:
+            # Add user query to conversation history
+            self.conversation_history.append({"role": "user", "content": query})
+
             # Use regular expressions to extract cryptocurrency name
             match = re.search(r"(price of|what is the price of|give me the price of)\s*(\w+)", query.lower())
             if match:
-                coin_id = match.group(2)  # Extract cryptocurrency name
+                coin_id = match.group(2).lower()  # Extract cryptocurrency name
 
                 try:
                     price = self.crypto_api.get_price(coin_id)
                     response = f"The current price of {coin_id} is ${price:.2f}"
                 except ValueError as e:
-                    response = str(e)  # Return error message for invalid cryptocurrencies
+                    response = str(e)  # Handle invalid cryptocurrencies gracefully
             else:
                 # For non-price-related queries, use LLM
-                prompt = f"{self.system_prompt}\nUser query: {query}"
                 messages = [{"role": "system", "content": self.system_prompt}] + self.conversation_history + [
                     {"role": "user", "content": query}
                 ]
@@ -55,8 +57,7 @@ class AIAgent:
                     messages=messages
                 ).choices[0].message.content
 
-            # Add query and response to conversation history
-            self.conversation_history.append({"role": "user", "content": query})
+            # Add assistant's response to conversation history
             self.conversation_history.append({"role": "assistant", "content": response})
 
             return response
