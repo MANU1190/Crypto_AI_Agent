@@ -1,0 +1,6 @@
+streamlit
+python-dotenv
+requests
+together
+google-cloud-translate  # Only if you implement translation
+pytest  # For testing (optional but recommended)
