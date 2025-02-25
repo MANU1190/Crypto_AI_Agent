@@ -68,26 +68,31 @@ The **Crypto AI Assistant** is an intelligent conversational agent designed to p
    git clone https://github.com/your-repo/crypto-ai-assistant.git
    cd crypto-ai-assistant
 
-Create a Virtual Environment
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+2. **Create a Virtual Environment**
+  ```bash
+  python -m venv venv
+  source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
-Install Dependencies
-pip install -r requirements.txt
+3. **Install Dependencies**
+  ```bash
+   pip install -r requirements.txt
 
-Set Up Environment Variables
-Create a .env file in the root directory with the following:
-TOGETHER_API_KEY=your_together_ai_api_key
+4. **Set Up Environment Variables**
+ ```bash
+  Create a .env file in the root directory with the following:
+  TOGETHER_API_KEY=your_together_ai_api_key
 
-Run the Application
-streamlit run app.py
+5. **Run the Application**
+ ```bash
+  streamlit run app.py
 
 
-Assumptions and Limitations
-Assumptions
+### Assumptions and Limitations
+**Assumptions**
 User queries are in English.
 Cryptocurrency names generally match those recognized by CoinGecko (e.g., "bitcoin", "ethereum").
-Limitations
+
+**Limitations**
 No real-time language translation for non-English inputs.
 The ReAct agent may misinterpret ambiguous queries due to reliance on prompt engineering.
 Dependent on public APIs (Together AI and CoinGecko), which may have rate limits or downtime.
